@@ -1,0 +1,47 @@
+{
+  "manifestVersion": 1,
+  "id": "netlify-cli-extensions",
+  "version": "1.0.0",
+  "name": "Netlify CLI Extensions",
+  "publisher": "justinyoo",
+  "description": "Deploy your static websites to Netlify.",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "netlify",
+    "static-site-generator"
+  ],
+  "galleryFlags": [
+    "Public"
+  ],
+  "icons": {
+    "default": "images/netlify.logo-500x500.png"
+  },
+  "content": {
+    "details": "README.md"
+  },
+  "links": {
+    "overview": {
+      "uri": "https://github.com/aliencube/AzureDevOps.Extensions/blob/master/README.md"
+    },
+    "license": {
+      "uri": "https://github.com/aliencube/AzureDevOps.Extensions/blob/master/LICENSE"
+    },
+    "repository": {
+      "uri": "https://github.com/aliencube/AzureDevOps.Extensions"
+    },
+    "issues": {
+      "uri": "https://github.com/aliencube/AzureDevOps.Extensions/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/aliencube/AzureDevOps.Extensions"
+  }
+}
