@@ -3,7 +3,7 @@
   "id": "netlify-cli-extensions",
   "version": "1.0.0",
   "name": "Netlify",
-  "publisher": "justinyoo",
+  "publisher": "{{publisher-id}}",
   "description": "Deploy your static websites to Netlify.",
   "targets": [
     {
@@ -15,13 +15,17 @@
   ],
   "tags": [
     "netlify",
-    "static-site-generator"
+    "static-site-generator",
+    "hugo",
+    "hexo",
+    "gatsby",
+    "ghost"
   ],
   "galleryFlags": [
     "Private"
   ],
   "icons": {
-    "default": "images/icon.png"
+    "default": "images/logomark.png"
   },
   "content": {
     "details": {
