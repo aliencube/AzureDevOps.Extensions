@@ -1,17 +1,19 @@
 {
   "name": "netlify-extensions",
   "version": "1.0.0",
-  "description": "",
+  "description": "This provides extensions to publish static websites to Netlify.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "netlify",
+    "static site"
+  ],
+  "author": "justinyoo",
+  "license": "MIT",
   "dependencies": {
-    "azure-pipelines-task-lib": "^2.8.0",
-    "netlify": "^2.4.6"
+    "azure-pipelines-task-lib": "^2.8.0"
   },
   "devDependencies": {
     "@types/node": "^12.0.8",

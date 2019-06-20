@@ -28,7 +28,7 @@
       "label": "Version",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "The version of Netlify CLI. If omitted, the latest version of netlify-cli is installed."
+      "helpMarkDown": "The version of Netlify CLI. If omitted, the latest version of netlify-cli is installed. Visit the [npm package](https://www.npmjs.com/package/netlify) to get an appropriate version."
     }
   ],
   "execution": {

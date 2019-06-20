@@ -1,13 +1,13 @@
 {
   "id": "adc3fb6d-1396-46d3-96e7-085b4881e1a2",
-  "name": "deployment",
-  "friendlyName": "Deployment",
+  "name": "deploy",
+  "friendlyName": "Deploy Website",
   "description": "Deploy website to Netlify",
   "helpMarkDown": "",
   "author": "Justin Yoo",
 
   "preview": false,
-  "showEnvironmentVariables": true,
+  "showEnvironmentVariables": false,
   "runsOn": [
     "Agent",
     "MachineGroup",
