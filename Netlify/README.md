@@ -12,6 +12,8 @@ This extension currently supports two tasks:
 * Install netlify-cli
 * Deploy static website to Netlify
 
+> The logo used here belongs to [Netlify](https://www.netlify.com/press/).
+
 
 ## Tasks ##
 
@@ -36,7 +38,3 @@ This task deploys the static website artifact to [Netlify](https://netlify.com).
 * `Validation Only`: **(Optional)** If checked, the task only validates the deployment.
 * `Deployment Message`: **(Optional)** Short blurb for deployment log.
 * `Functions Directory`: **(Optional)** AWS Lambda functions directory.
-
----
-
-> The logo used here belongs to [Netlify](https://www.netlify.com/press/).
