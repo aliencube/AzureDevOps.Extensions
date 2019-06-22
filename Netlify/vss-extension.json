@@ -22,7 +22,8 @@
     "ghost"
   ],
   "galleryFlags": [
-    "Private"
+    "Free",
+    "Public"
   ],
   "icons": {
     "default": "images/logomark.png"
