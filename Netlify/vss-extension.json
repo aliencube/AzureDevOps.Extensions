@@ -1,9 +1,9 @@
 {
   "manifestVersion": 1,
-  "id": "{{extension-id}}",
+  "id": "netlify-cli-extensions",
   "version": "1.0.0",
-  "name": "{{extension-name}}",
-  "publisher": "{{publisher-id}}",
+  "name": "Netlify",
+  "publisher": "aliencube",
   "description": "Deploy your static websites to Netlify.",
   "targets": [
     {
@@ -26,7 +26,7 @@
     "Public"
   ],
   "icons": {
-    "default": "images/icon.png"
+    "default": "icon.png"
   },
   "content": {
     "details": {
