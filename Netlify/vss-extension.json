@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1,
-  "id": "netlify-cli-extensions",
+  "id": "{{extension-id}}",
   "version": "1.0.0",
-  "name": "Netlify",
+  "name": "{{extension-name}}",
   "publisher": "{{publisher-id}}",
   "description": "Deploy your static websites to Netlify.",
   "targets": [
