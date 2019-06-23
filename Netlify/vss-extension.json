@@ -16,10 +16,12 @@
   "tags": [
     "netlify",
     "static-site-generator",
-    "hugo",
-    "hexo",
     "gatsby",
-    "ghost"
+    "ghost",
+    "hexo",
+    "hugo",
+    "jekyll",
+    "wyam"
   ],
   "galleryFlags": [
     "Free",
