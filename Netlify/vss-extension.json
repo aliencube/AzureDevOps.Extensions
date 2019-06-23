@@ -37,7 +37,8 @@
   },
   "files": [
     {
-      "path": "images"
+      "path": "images",
+      "addressable": true
     },
     {
       "path": "src/install",
