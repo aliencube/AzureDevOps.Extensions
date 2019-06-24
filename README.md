@@ -5,7 +5,9 @@ This provides several extensions for Azure DevOps.
 
 ## Netlify ##
 
-This is to deploy your static websites to Netlify. For more details, [click](Netlity/README.md).
+[![Build status](https://dev.azure.com/aliencube/AzureDevOps.Extensions/_apis/build/status/%5Bnetlify%5D%20dev%2C%20feature%2C%20hotfix)](https://dev.azure.com/aliencube/AzureDevOps.Extensions/_build/latest?definitionId=1)
+
+This is to deploy your static websites to Netlify. For more details, [click](Netlify/README.md).
 
 
 ## Contribution ##
