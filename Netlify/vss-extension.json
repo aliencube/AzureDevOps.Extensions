@@ -3,7 +3,7 @@
   "id": "netlify-cli-extensions",
   "version": "1.0.0",
   "name": "Netlify",
-  "publisher": "{{publisher-id}}",
+  "publisher": "aliencube",
   "description": "Deploy your static websites to Netlify.",
   "targets": [
     {
@@ -16,16 +16,19 @@
   "tags": [
     "netlify",
     "static-site-generator",
-    "hugo",
-    "hexo",
     "gatsby",
-    "ghost"
+    "ghost",
+    "hexo",
+    "hugo",
+    "jekyll",
+    "wyam"
   ],
   "galleryFlags": [
-    "Private"
+    "Free",
+    "Public"
   ],
   "icons": {
-    "default": "images/logomark.png"
+    "default": "icon.png"
   },
   "content": {
     "details": {
@@ -34,7 +37,8 @@
   },
   "files": [
     {
-      "path": "images"
+      "path": "images",
+      "addressable": true
     },
     {
       "path": "src/install",
