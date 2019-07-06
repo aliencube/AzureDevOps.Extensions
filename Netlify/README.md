@@ -23,7 +23,7 @@ This task installs the [netlify-cli](https://www.npmjs.com/package/netlify-cli) 
 
 ![](images/install.png)
 
-* `Version`: Specify the netlify-cli version. If omitted, it installs the latest version of `netlify-cli`. Any specific version can be found at the [npmjs.com](https://www.npmjs.com/package/netlify-cli) page.
+* `Version`: Specify the netlify-cli version. If omitted, it installs the latest version of `netlify-cli`. You can find a specific version at the [npmjs.com](https://www.npmjs.com/package/netlify-cli) page.
 
 
 ### Deploy to Netlify ###

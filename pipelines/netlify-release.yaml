@@ -84,18 +84,20 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
+          - task: TfxInstaller@1
+        # - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
             displayName: 'Install tfx-cli'
             inputs:
               version: v0.7.x
               autoUpdate: true
 
-          - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishExtension@1
+          - task: PublishExtension@1
+        # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishExtension@1
             displayName: 'Publish Extension'
             inputs:
               connectedServiceName: aliencube.marketplace.visualstudio.com
               fileType: vsix
-              vsixFile: '$(System.DefaultWorkingDirectory)/$(ExtensionName)/drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
+              vsixFile: '$(Build.ArtifactStagingDirectory)/../drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
               publisherId: '$(PublisherId)'
               updateTasksVersion: false
               updateTasksId: false
@@ -118,18 +120,19 @@ stages:
 #       runOnce:
 #         deploy:
 #           steps:
-#           - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
+#           - task: TfxInstaller@1
+#         # - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
 #             displayName: 'Install tfx-cli'
 #             inputs:
 #               version: v0.7.x
 #               autoUpdate: true
-
-#           - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishExtension@1
+#           - task: PublishExtension@1
+#         # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishExtension@1
 #             displayName: 'Publish Extension'
 #             inputs:
 #               connectedServiceName: aliencube.marketplace.visualstudio.com
 #               fileType: vsix
-#               vsixFile: '$(System.DefaultWorkingDirectory)/$(ExtensionName)/drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
+#               vsixFile: '$(Build.ArtifactStagingDirectory)/../drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
 #               publisherId: '$(PublisherId)'
 #               updateTasksVersion: false
 #               updateTasksId: false
