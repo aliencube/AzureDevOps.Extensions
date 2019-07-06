@@ -9,11 +9,17 @@ pr:
     - dev
   paths:
     include:
-    - Netlify
+    - 'Netlify/*'
+    exclude:
+    - 'pipelines/*'
+    - 'scripts/*'
+    - '.editorconfig'
+    - '.gitignore'
+    - 'README.md'
 
 stages:
 # Build Pipeline
-- stage: BuildTestPackage
+- stage: Build
   jobs:
   - job: HostedVs2017
     displayName: Hosted VS2017
@@ -24,16 +30,6 @@ stages:
       clean: all
     
     steps:
-    - task: Npm@1
-      displayName: 'Install npm Packages'
-      inputs:
-        command: install
-        workingDir: '$(Build.SourcesDirectory)/$(ExtensionName)/src'
-        verbose: false
-    
-    - task: PowerShell@2
-      displayName: 'Compile TypeScript Files'
-      inputs:
-        targetType: filePath
-        filePath: '$(Build.SourcesDirectory)/scripts/Compile-TypeScripts.ps1'
-        arguments: '-SourceDirectory $(Build.SourcesDirectory)/$(ExtensionName)/src'
+    - template: templates/npm-build-steps.yaml
+      parameters:
+        extensionName: $(ExtensionName)

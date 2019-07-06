@@ -1,0 +1,17 @@
+parameters:
+  extensionName: ""
+
+steps:
+- task: Npm@1
+  displayName: 'Install npm Packages'
+  inputs:
+    command: install
+    workingDir: '$(Build.SourcesDirectory)/${{ parameters.extensionName }}/src'
+    verbose: false
+
+- task: PowerShell@2
+  displayName: 'Compile TypeScript Files'
+  inputs:
+    targetType: filePath
+    filePath: '$(Build.SourcesDirectory)/scripts/Compile-TypeScripts.ps1'
+    arguments: '-SourceDirectory $(Build.SourcesDirectory)/${{ parameters.extensionName }}/src'
