@@ -82,22 +82,20 @@ stages:
           steps:
           - template: templates/tfx-release-steps.yaml
             parameters:
-              tfx:
-                version: "v0.7.x"
-                autoUpdate: true
-              publish:
-                connectedServiceName: aliencube.marketplace.visualstudio.com
-                fileType: vsix
-                publisherId: $(PublisherId)
-                prodPublisherId: $(PublisherId.Prod)
-                extensionId: $(ExtensionId)
-                version: $(Version)
-                updateTasksVersion: false
-                updateTasksId: false
-                extensionVisibility: $(Visibility)
-                extensionPricing: $(Pricing)
-                outputVariable: Extension.OutputPath
-                organisation: $(Organisation)
+              tfxVersion: "v0.7.x"
+              tfxAutoUpdate: true
+              publishConnectedServiceName: aliencube.marketplace.visualstudio.com
+              publishFileType: vsix
+              publishPublisherId: $(PublisherId)
+              publishProdPublisherId: $(PublisherId.Prod)
+              publishExtensionId: $(ExtensionId)
+              publishVersion: $(Version)
+              publishUpdateTasksVersion: false
+              publishUpdateTasksId: false
+              publishExtensionVisibility: $(Visibility)
+              publishExtensionPricing: $(Pricing)
+              publishOutputVariable: Extension.OutputPath
+              publishOrganisation: $(Organisation)
 # # Release Pipeline to PROD
 # - stage: PROD
 #   jobs:
@@ -115,19 +113,17 @@ stages:
 #           steps:
 #           - template: templates/tfx-release-steps.yaml
 #             parameters:
-#               tfx:
-#                 version: "v0.7.x"
-#                 autoUpdate: true
-#               publish:
-#                 connectedServiceName: aliencube.marketplace.visualstudio.com
-#                 fileType: vsix
-#                 publisherId: $(PublisherId)
-#                 prodPublisherId: $(PublisherId.Prod)
-#                 extensionId: $(ExtensionId)
-#                 version: $(Version)
-#                 updateTasksVersion: false
-#                 updateTasksId: false
-#                 extensionVisibility: $(Visibility)
-#                 extensionPricing: $(Pricing)
-#                 outputVariable: Extension.OutputPath
-#                 organisation: ""
+#               tfxVersion: "v0.7.x"
+#               tfxAutoUpdate: true
+#               publishConnectedServiceName: aliencube.marketplace.visualstudio.com
+#               publishFileType: vsix
+#               publishPublisherId: $(PublisherId)
+#               publishProdPublisherId: $(PublisherId.Prod)
+#               publishExtensionId: $(ExtensionId)
+#               publishVersion: $(Version)
+#               publishUpdateTasksVersion: false
+#               publishUpdateTasksId: false
+#               publishExtensionVisibility: $(Visibility)
+#               publishExtensionPricing: $(Pricing)
+#               publishOutputVariable: Extension.OutputPath
+#               publishOrganisation: ""
