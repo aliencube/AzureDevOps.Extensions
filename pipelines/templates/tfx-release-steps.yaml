@@ -1,40 +1,38 @@
 parameters:
-  tfx:
-    version: "v0.7.x"
-    autoUpdate: true
-  publish:
-    connectedServiceName: ""
-    fileType: vsix
-    publisherId: aliencube
-    prodPublisherId: aliencube
-    extensionId: netlify-cli-extensions
-    version: "1.0.0"
-    updateTasksVersion: false
-    updateTasksId: false
-    extensionVisibility: private
-    extensionPricing: free
-    outputVariable: Extension.OutputPath
-    organisation: aliencube-dev
+  tfxVersion: "v0.7.x"
+  tfxAutoUpdate: true
+  publishConnectedServiceName: ""
+  publishFileType: vsix
+  publishPublisherId: aliencube
+  publishProdPublisherId: aliencube
+  publishExtensionId: netlify-cli-extensions
+  publishVersion: "1.0.0"
+  publishUpdateTasksVersion: false
+  publishUpdateTasksId: false
+  publishExtensionVisibility: private
+  publishExtensionPricing: free
+  publishOutputVariable: Extension.OutputPath
+  publishOrganisation: aliencube-dev
 
 steps:
 - task: TfxInstaller@1
 #- task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
   displayName: 'Install tfx-cli'
   inputs:
-    version: ${{ parameters.tfx.version }}
-    autoUpdate: ${{ parameters.tfx.autoUpdate }}
+    version: ${{ parameters.tfxVersion }}
+    autoUpdate: ${{ parameters.tfxAutoUpdate }}
 - task: PublishExtension@1
 #- task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishExtension@1
   displayName: 'Publish Extension'
   inputs:
-    connectedServiceName: ${{ parameters.publish.connectedServiceName }}
-    fileType: ${{ parameters.publish.fileType }}
-    vsixFile: '$(Pipeline.Workspace)/drop/${{ parameters.publish.prodPublisherId }}.${{ parameters.publish.extensionId }}-${{ parameters.publish.version }}.vsix'
-    publisherId: ${{ parameters.publish.publisherId }}
-    updateTasksVersion: ${{ parameters.publish.updateTasksVersion }}
-    updateTasksId: ${{ parameters.publish.updateTasksId }}
-    extensionVisibility: ${{ parameters.publish.extensionVisibility }}
-    extensionPricing: ${{ parameters.publish.extensionPricing }}
-    outputVariable: ${{ parameters.publish.outputVariable }}
-    ${{ if eq(parameters.publish.extensionVisibility, 'private') }}:
-      shareWith: ${{ parameters.publish.organisation }}
+    connectedServiceName: ${{ parameters.publishConnectedServiceName }}
+    fileType: ${{ parameters.publishFileType }}
+    vsixFile: '$(Pipeline.Workspace)/drop/${{ parameters.publishProdPublisherId }}.${{ parameters.publishExtensionId }}-${{ parameters.publishVersion }}.vsix'
+    publisherId: ${{ parameters.publishPublisherId }}
+    updateTasksVersion: ${{ parameters.publishUpdateTasksVersion }}
+    updateTasksId: ${{ parameters.publishUpdateTasksId }}
+    extensionVisibility: ${{ parameters.publishExtensionVisibility }}
+    extensionPricing: ${{ parameters.publishExtensionPricing }}
+    outputVariable: ${{ parameters.publishOutputVariable }}
+    ${{ if eq(parameters.publishExtensionVisibility, 'private') }}:
+      shareWith: ${{ parameters.publishOrganisation }}
