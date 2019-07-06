@@ -1,0 +1,141 @@
+name: $(Version).$(rev:r)
+
+variables:
+- group: Common Netlify
+
+trigger:
+  branches:
+    include:
+    - release/netlify
+  paths:
+    include:
+    - Netlify
+
+stages:
+# Build Pipeline
+- stage: BuildTestPackage
+  jobs:
+  - job: HostedVs2017
+    displayName: Hosted VS2017
+    pool:
+      name: Hosted VS2017
+      demands: npm
+    workspace:
+      clean: all
+    variables:
+    - group: Common Marketplace
+    - group: PROD Marketplace
+    
+    steps:
+    - task: Npm@1
+      displayName: 'Install npm Packages'
+      inputs:
+        command: install
+        workingDir: '$(Build.SourcesDirectory)/$(ExtensionName)/src'
+        verbose: false
+    
+    - task: PowerShell@2
+      displayName: 'Compile TypeScript Files'
+      inputs:
+        targetType: filePath
+        filePath: '$(Build.SourcesDirectory)/scripts/Compile-TypeScripts.ps1'
+        arguments: '-SourceDirectory $(Build.SourcesDirectory)/$(ExtensionName)/src'
+    
+    - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
+      displayName: 'Install tfx-cli'
+      inputs:
+        version: v0.7.x
+        autoUpdate: true
+    
+    - task: ms-devlabs.vsts-developer-tools-build-tasks.package-extension-build-task.PackageVSTSExtension@1
+      displayName: 'Package Extension'
+      inputs:
+        rootFolder: '$(Build.SourcesDirectory)/$(ExtensionName)'
+        patternManifest: '$(ManifestFileName)'
+        outputPath: '$(Build.ArtifactStagingDirectory)'
+        outputVariable: 'Extension.OutputPath'
+        publisherId: '$(PublisherId)'
+        extensionId: '$(ExtensionId)'
+        extensionName: '$(ExtensionName)'
+        extensionVersion: '$(Version)'
+        updateTasksVersion: false
+        updateTasksId: false
+        extensionVisibility: private
+        extensionPricing: free
+    
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        pathToPublish: $(Build.ArtifactStagingDirectory)
+        artifactName: drop
+        publishLocation: 'Container'
+# Release Pipeline to DEV
+- stage: ReleaseToDev
+  jobs:
+  - deployment: HostedVs2017
+    displayName: Hosted VS2017
+    pool:
+      name: Hosted VS2017
+    variables:
+    - group: Common Marketplace
+    - group: DEV Marketplace
+    environment: netlify-dev
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: TfxInstaller@1
+        # - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
+            displayName: 'Install tfx-cli'
+            inputs:
+              version: v0.7.x
+              autoUpdate: true
+
+          - task: PublishExtension@1
+        # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishExtension@1
+            displayName: 'Publish Extension'
+            inputs:
+              connectedServiceName: aliencube.marketplace.visualstudio.com
+              fileType: vsix
+              vsixFile: '$(Build.ArtifactStagingDirectory)/../drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
+              publisherId: '$(PublisherId)'
+              updateTasksVersion: false
+              updateTasksId: false
+              extensionVisibility: private
+              extensionPricing: free
+              outputVariable: 'Extension.OutputPath'
+              shareWith: '$(Organisation)'
+# # Release Pipeline to PROD
+# - stage: ReleaseToProd
+#   jobs:
+#   - deployment: HostedVs2017
+#     displayName: Hosted VS2017
+#     pool:
+#       name: Hosted VS2017
+#     variables:
+#     - group: Common Marketplace
+#     - group: PROD Marketplace
+#     environment: netlify-prod
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
+#           - task: TfxInstaller@1
+#         # - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1
+#             displayName: 'Install tfx-cli'
+#             inputs:
+#               version: v0.7.x
+#               autoUpdate: true
+#           - task: PublishExtension@1
+#         # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishExtension@1
+#             displayName: 'Publish Extension'
+#             inputs:
+#               connectedServiceName: aliencube.marketplace.visualstudio.com
+#               fileType: vsix
+#               vsixFile: '$(Build.ArtifactStagingDirectory)/../drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
+#               publisherId: '$(PublisherId)'
+#               updateTasksVersion: false
+#               updateTasksId: false
+#               extensionVisibility: public
+#               extensionPricing: free
+#               outputVariable: 'Extension.OutputPath'
