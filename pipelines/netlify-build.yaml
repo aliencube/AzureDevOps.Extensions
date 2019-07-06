@@ -11,7 +11,13 @@ trigger:
     - hotfix/*
   paths:
     include:
-    - Netlify
+    - 'Netlify/*'
+    exclude:
+    - 'pipelines/*'
+    - 'scripts/*'
+    - '.editorconfig'
+    - '.gitignore'
+    - 'README.md'
 
 stages:
 # Build Pipeline
