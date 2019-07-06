@@ -38,7 +38,7 @@ stages:
       displayName: 'Compile TypeScript Files'
       inputs:
         targetType: filePath
-        filePath: './$(Build.SourcesDirectory)/scripts/Compile-TypeScripts.ps1'
+        filePath: '$(Build.SourcesDirectory)/scripts/Compile-TypeScripts.ps1'
         arguments: '-SourceDirectory $(Build.SourcesDirectory)/$(ExtensionName)/src'
     
     - task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@1

@@ -37,5 +37,5 @@ stages:
       displayName: 'Compile TypeScript Files'
       inputs:
         targetType: filePath
-        filePath: './$(Build.SourcesDirectory)/scripts/Compile-TypeScripts.ps1'
+        filePath: '$(Build.SourcesDirectory)/scripts/Compile-TypeScripts.ps1'
         arguments: '-SourceDirectory $(Build.SourcesDirectory)/$(ExtensionName)/src'
