@@ -97,7 +97,7 @@ stages:
             inputs:
               connectedServiceName: aliencube.marketplace.visualstudio.com
               fileType: vsix
-              vsixFile: '$(Build.ArtifactStagingDirectory)/../drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
+              vsixFile: '$(Pipeline.Workspace)/drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
               publisherId: '$(PublisherId)'
               updateTasksVersion: false
               updateTasksId: false
@@ -132,7 +132,7 @@ stages:
             inputs:
               connectedServiceName: aliencube.marketplace.visualstudio.com
               fileType: vsix
-              vsixFile: '$(Build.ArtifactStagingDirectory)/../drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
+              vsixFile: '$(Pipeline.Workspace)/drop/$(PublisherId.Prod).$(ExtensionId)-$(Version).vsix'
               publisherId: '$(PublisherId)'
               updateTasksVersion: false
               updateTasksId: false
