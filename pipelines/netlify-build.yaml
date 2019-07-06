@@ -21,7 +21,7 @@ trigger:
 
 stages:
 # Build Pipeline
-- stage: BuildTestPackage
+- stage: Build
   jobs:
   - job: HostedVs2017
     displayName: Hosted VS2017
