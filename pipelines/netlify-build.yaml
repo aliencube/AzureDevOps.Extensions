@@ -11,7 +11,7 @@ trigger:
     - hotfix/*
   paths:
     include:
-    - Netlify
+    - $(ExtensionName)
 
 stages:
 # Build Pipeline

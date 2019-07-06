@@ -10,7 +10,7 @@ Deploy your static websites to [Netlify](https://netlify.com).
 This extension currently supports two tasks:
 
 * Install netlify-cli
-* Deploy static website to Netlify
+* Deploy the static website to Netlify
 
 > The logo used here belongs to [Netlify](https://www.netlify.com/press/).
 
@@ -23,7 +23,7 @@ This task installs the [netlify-cli](https://www.npmjs.com/package/netlify-cli) 
 
 ![](images/install.png)
 
-* `Version`: Specify the netlify-cli version. If omitted, the latest version of netlify-cli will be installed. Any specific version can be found at the [npmjs.com](https://www.npmjs.com/package/netlify-cli) page.
+* `Version`: Specify the netlify-cli version. If omitted, the latest version of netlify-cli is installed. Any specific version can be found at the [npmjs.com](https://www.npmjs.com/package/netlify-cli) page.
 
 
 ### Deploy to Netlify ###
