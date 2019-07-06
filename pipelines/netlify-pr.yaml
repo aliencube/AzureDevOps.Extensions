@@ -9,7 +9,7 @@ pr:
     - dev
   paths:
     include:
-    - $(ExtensionName)
+    - Netlify
 
 stages:
 # Build Pipeline
